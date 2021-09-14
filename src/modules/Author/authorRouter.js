@@ -7,8 +7,14 @@ class AuthorRouter {
 	initializeRoutes(authorController) {
 		this.router
 			.route('/authors')
-			.get(authorController.getAll)
-			.post(authorController.add);
+			.get(authorController.getAllAuthors)
+			.post(authorController.addAuthor);
+
+		this.router
+			.route('/authors/:author_nickname')
+			.get(authorController.getAuthor)
+			.put(authorController.updateAuthor)
+			.delete(authorController.deleteAuthor);
 	}
 }
 export default AuthorRouter;

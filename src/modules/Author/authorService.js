@@ -5,18 +5,36 @@ class AuthorService {
 		this.authorRepository = authorRepository;
 	}
 
-	async getAll() {
-		const authors = await this.authorRepository.findAll();
+	async getAllAuthors() {
+		const authors = await this.authorRepository.findAllAuthors();
 		return authors.map((author) => new AuthorEntity(author));
 	}
 
-	async add(authorData) {
+	async addAuthor(authorData) {
 		const authorEntity = new AuthorEntity(authorData);
 
 		//todo : add validators
 
-		await this.authorRepository.create(authorEntity);
+		await this.authorRepository.createAuthor(authorEntity);
 		return authorEntity;
+	}
+
+	async getAuthor(authorData) {
+		const author = await this.authorRepository.findAuthor(authorData);
+		return author;
+	}
+
+	async updateAuthor(authorParam, authorData) {
+		const author = await this.authorRepository.updateAuthor(
+			authorParam,
+			authorData
+		);
+		return author;
+	}
+
+	async deleteAuthor(authorParam) {
+		const author = await this.authorRepository.deleteAuthor(authorParam);
+		return author;
 	}
 }
 
