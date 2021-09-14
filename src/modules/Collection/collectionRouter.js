@@ -7,8 +7,14 @@ class CollectionRouter {
 	initializeRoutes(collectionController) {
 		this.router
 			.route('/collections')
-			.get(collectionController.getAll)
-			.post(collectionController.add);
+			.get(collectionController.getAllCollections)
+			.post(collectionController.addCollection);
+
+		this.router
+			.route('/collections/:collection_name')
+			.get(collectionController.getCollection)
+			.put(collectionController.updateCollection)
+			.delete(collectionController.deleteCollection);
 	}
 }
 export default CollectionRouter;
