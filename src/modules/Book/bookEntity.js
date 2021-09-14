@@ -36,7 +36,7 @@ class BookEntity {
 	}
 
 	validate() {
-		return !this.title ? false : true;
+		return !this.id ? false : true;
 	}
 }
 

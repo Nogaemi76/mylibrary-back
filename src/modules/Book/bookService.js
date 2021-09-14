@@ -5,18 +5,35 @@ class BookService {
 		this.bookRepository = bookRepository;
 	}
 
-	async getAll() {
-		const books = await this.bookRepository.findAll();
-		return books.map((book) => new BookEntity(book));
+	async getAllBooks() {
+		const books = await this.bookRepository.findAllBooks();
+		if (!books) {
+			console.log('error in book service');
+		} else return books.map((book) => new BookEntity(book));
 	}
 
-	async add(bookData) {
+	async addBook(bookData) {
 		const bookEntity = new BookEntity(bookData);
 
 		//todo : add validators
 
-		await this.bookRepository.create(bookEntity);
+		await this.bookRepository.createBook(bookEntity);
 		return bookEntity;
+	}
+
+	async getBook(bookData) {
+		const book = await this.bookRepository.findBook(bookData);
+		return book;
+	}
+
+	async updateBook(bookParam, bookData) {
+		const book = await this.bookRepository.updateBook(bookParam, bookData);
+		return book;
+	}
+
+	async deleteBook(bookParam) {
+		const book = await this.bookRepository.deleteBook(bookParam);
+		return book;
 	}
 }
 

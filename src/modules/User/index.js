@@ -1,4 +1,6 @@
 import { Router } from 'express';
+import { jwtService } from '../../libs';
+import { auth } from '../../middlewares';
 
 import UserDao from './userDao';
 import UserRepository from './userRepository';
@@ -10,7 +12,7 @@ const router = Router();
 
 const userRepository = new UserRepository(UserDao);
 const userService = new UserService(userRepository);
-const userController = new UserController(userService);
-const userRouter = new UserRouter(router, userController);
+const userController = new UserController(userService, jwtService);
+const userRouter = new UserRouter(router, auth, userController);
 
 export { userRouter };

@@ -14,6 +14,10 @@ class UserEntity {
 		this.email = email;
 		this.password = password;
 	}
+
+	validate() {
+		return !this.email || !this.password ? false : true;
+	}
 }
 
 export default UserEntity;
