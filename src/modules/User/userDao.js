@@ -58,7 +58,7 @@ class UserDao extends Model {
 					unique: true,
 					validate: {
 						notNull: true,
-						len: [3, 50],
+						len: [8, 500],
 					},
 				},
 			},

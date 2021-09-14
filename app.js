@@ -5,12 +5,15 @@ import config from './src/config/env';
 
 import routes from './src/modules';
 
-const application = new Server(express, routes);
+import cookieParser from 'cookie-parser';
+
+const middlewares = { cookieParser };
+const application = new Server(express, routes, middlewares);
 
 (async () => {
 	try {
 		await db.associateAll(db.sequelize.models);
-		await db.sequelize.sync({ alter: true });
+		await db.sequelize.sync({ alter: false });
 		await application.listen(config.app_port);
 	} catch (error) {
 		console.log(error);
