@@ -5,18 +5,38 @@ class WishlistService {
 		this.wishlistRepository = wishlistRepository;
 	}
 
-	async getAll() {
-		const wishlists = await this.wishlistRepository.findAll();
+	async getAllWishlists() {
+		const wishlists = await this.wishlistRepository.findAllWishlists();
 		return wishlists.map((wishlist) => new WishlistEntity(wishlist));
 	}
 
-	async add(wishlistData) {
+	async addWishlist(wishlistData) {
 		const wishlistEntity = new WishlistEntity(wishlistData);
 
 		//todo : add validators
 
-		await this.wishlistRepository.create(wishlistEntity);
+		await this.wishlistRepository.createWishlist(wishlistEntity);
 		return wishlistEntity;
+	}
+
+	async getWishlist(wishlistData) {
+		const wishlist = await this.wishlistRepository.findWishlist(wishlistData);
+		return wishlist;
+	}
+
+	async updateWishlist(wishlistParam, wishlistData) {
+		const wishlist = await this.wishlistRepository.updateWishlist(
+			wishlistParam,
+			wishlistData
+		);
+		return wishlist;
+	}
+
+	async deleteWishlist(wishlistParam) {
+		const wishlist = await this.wishlistRepository.deleteWishlist(
+			wishlistParam
+		);
+		return wishlist;
 	}
 }
 

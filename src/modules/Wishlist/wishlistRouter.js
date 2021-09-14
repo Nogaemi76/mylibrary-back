@@ -7,8 +7,14 @@ class WishlistRouter {
 	initializeRoutes(wishlistController) {
 		this.router
 			.route('/wishlists')
-			.get(wishlistController.getAll)
-			.post(wishlistController.add);
+			.get(wishlistController.getAllWishlists)
+			.post(wishlistController.addWishlist);
+
+		this.router
+			.route('/wishlists/:wishlist_name')
+			.get(wishlistController.getWishlist)
+			.put(wishlistController.updateWishlist)
+			.delete(wishlistController.deleteWishlist);
 	}
 }
 export default WishlistRouter;
