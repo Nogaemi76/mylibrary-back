@@ -7,8 +7,14 @@ class BookRouter {
 	initializeRoutes(bookController) {
 		this.router
 			.route('/books')
-			.get(bookController.getAll)
-			.post(bookController.add);
+			.get(bookController.getAllBooks)
+			.post(bookController.addBook);
+
+		this.router
+			.route('/books/:title')
+			.get(bookController.getBook)
+			.put(bookController.updateBook)
+			.delete(bookController.deleteBook);
 	}
 }
 export default BookRouter;
