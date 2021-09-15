@@ -1,12 +1,13 @@
 class CollectionEntity {
-	constructor({ id, collection_name, number_of_items }) {
+	constructor({ id, collection_title, total_books, user_id }) {
 		this.id = id;
-		this.collection_name = collection_name;
-		this.number_of_items = number_of_items;
+		this.collection_title = collection_title;
+		this.total_books = total_books;
+		this.user_id = user_id;
 	}
 
 	validate() {
-		return !this.collection_name ? false : true;
+		return !this.collection_title ? false : true;
 	}
 }
 

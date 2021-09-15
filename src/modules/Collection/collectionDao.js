@@ -15,7 +15,7 @@ class CollectionDao extends Model {
 						isUUID: 4,
 					},
 				},
-				collection_name: {
+				collection_title: {
 					type: DataTypes.STRING,
 					allowNull: false,
 					validate: {
@@ -23,16 +23,23 @@ class CollectionDao extends Model {
 						len: [3, 50],
 					},
 				},
-				number_of_items: {
+				total_books: {
 					type: DataTypes.INTEGER,
 					allowNull: false,
+				},
+				user_id: {
+					type: DataTypes.UUID,
+					references: {
+						model: 'Users',
+						key: 'id',
+					},
 				},
 			},
 			{ sequelize, modelName: 'Collection' }
 		);
 	}
 	static associate(models) {
-
+		this.belongsTo(models.User, { foreignKey: 'user_id', as: 'users' });
 		return this;
 	}
 }
