@@ -10,31 +10,31 @@ class CollectionRepository {
 		return await this.collectionDao.create(collectionEntity);
 	}
 
-	async findCollection(collection_name) {
+	async findCollection(collection_title) {
 		const collection = await this.collectionDao.findOne({
-			where: { collection_name },
+			where: { collection_title },
 		});
 		return collection;
 	}
 
-	async updateCollection(collection_name, collectionEntity) {
+	async updateCollection(collection_title, collectionEntity) {
 		const collectionToUpdate = await this.collectionDao.findOne({
-			where: { collection_name },
+			where: { collection_title },
 		});
 
 		const collectionUpdated = await collectionToUpdate.update(collectionEntity);
 		return collectionUpdated;
 	}
 
-	async deleteCollection(collection_name) {
+	async deleteCollection(collection_title) {
 		// const collectionToDelete = await this.collectionDao.findOne({
-		// 	where: { collection_name },
+		// 	where: { collection_title },
 		// });
 		// if (!collectionToDelete) {
 		// 	console.log("Cette collection n'existe pas dans la base de données.");
 		// }
 		await this.collectionDao.destroy({
-			where: { collection_name },
+			where: { collection_title },
 		});
 	}
 }

@@ -11,7 +11,7 @@ class WishlistRouter {
 			.post(wishlistController.addWishlist);
 
 		this.router
-			.route('/wishlists/:wishlist_name')
+			.route('/wishlists/:wishlist_title')
 			.get(wishlistController.getWishlist)
 			.put(wishlistController.updateWishlist)
 			.delete(wishlistController.deleteWishlist);

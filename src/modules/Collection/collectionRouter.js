@@ -11,7 +11,7 @@ class CollectionRouter {
 			.post(collectionController.addCollection);
 
 		this.router
-			.route('/collections/:collection_name')
+			.route('/collections/:collection_title')
 			.get(collectionController.getCollection)
 			.put(collectionController.updateCollection)
 			.delete(collectionController.deleteCollection);

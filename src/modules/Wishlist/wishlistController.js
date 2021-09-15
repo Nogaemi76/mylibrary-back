@@ -24,7 +24,7 @@ class WishlistController {
 	getWishlist = async (req, res, next) => {
 		try {
 			const wishlist = await this.wishlistService.getWishlist(
-				req.params.wishlist_name
+				req.params.wishlist_title
 			);
 			res.status(200).json(wishlist);
 		} catch (error) {
@@ -35,7 +35,7 @@ class WishlistController {
 	updateWishlist = async (req, res, next) => {
 		try {
 			const wishlist = await this.wishlistService.updateWishlist(
-				req.params.wishlist_name,
+				req.params.wishlist_title,
 				{ ...req.body }
 			);
 			res.status(200).json(wishlist);
@@ -46,7 +46,7 @@ class WishlistController {
 
 	deleteWishlist = async (req, res, next) => {
 		try {
-			await this.wishlistService.deleteWishlist(req.params.wishlist_name);
+			await this.wishlistService.deleteWishlist(req.params.wishlist_title);
 			res.status(200).json({ message: 'Wishlist supprimée' });
 		} catch (error) {
 			next(error);
