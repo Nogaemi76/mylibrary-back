@@ -22,7 +22,7 @@ class UserDao extends Model {
 					unique: true,
 					validate: {
 						notNull: true,
-						len: [3, 50],
+						len: [2, 50],
 					},
 				},
 				user_lastname: {
@@ -31,7 +31,7 @@ class UserDao extends Model {
 					unique: true,
 					validate: {
 						notNull: true,
-						len: [3, 50],
+						len: [2, 50],
 					},
 				},
 				user_firstname: {
@@ -40,7 +40,7 @@ class UserDao extends Model {
 					unique: true,
 					validate: {
 						notNull: true,
-						len: [3, 50],
+						len: [2, 50],
 					},
 				},
 				email: {
@@ -49,7 +49,7 @@ class UserDao extends Model {
 					unique: true,
 					validate: {
 						notNull: true,
-						len: [3, 50],
+						len: [3, 255],
 					},
 				},
 				password: {
@@ -58,7 +58,7 @@ class UserDao extends Model {
 					unique: true,
 					validate: {
 						notNull: true,
-						len: [8, 500],
+						len: [8, 300],
 					},
 				},
 			},
@@ -66,8 +66,9 @@ class UserDao extends Model {
 		);
 	}
 	static associate(models) {
-		
-
+		this.hasMany(models.Collection, {
+			as: 'collections',
+		});
 		return this;
 	}
 }
