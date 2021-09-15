@@ -15,7 +15,7 @@ class WishlistDao extends Model {
 						isUUID: 4,
 					},
 				},
-				wishlist_name: {
+				wishlist_title: {
 					type: DataTypes.STRING,
 					allowNull: false,
 					validate: {
@@ -23,7 +23,7 @@ class WishlistDao extends Model {
 						len: [3, 50],
 					},
 				},
-				number_of_items: {
+				total_books: {
 					type: DataTypes.INTEGER,
 					allowNull: false,
 				},
@@ -32,7 +32,7 @@ class WishlistDao extends Model {
 		);
 	}
 	static associate(models) {
-
+		
 		return this;
 	}
 }

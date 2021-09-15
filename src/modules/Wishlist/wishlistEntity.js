@@ -1,12 +1,12 @@
 class WishlistEntity {
-	constructor({ id, wishlist_name, number_of_items }) {
+	constructor({ id, wishlist_title, total_books }) {
 		this.id = id;
-		this.wishlist_name = wishlist_name;
-		this.number_of_items = number_of_items;
+		this.wishlist_title = wishlist_title;
+		this.total_books = total_books;
 	}
 
 	validate() {
-		return !this.wishlist_name ? false : true;
+		return !this.wishlist_title ? false : true;
 	}
 }
 
