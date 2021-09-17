@@ -17,6 +17,13 @@ class CollectionRepository {
 		return collection;
 	}
 
+	async findCollectionByUserId(user_id) {
+		const collection = await this.collectionDao.findAll({
+			where: { user_id },
+		});
+		return collection;
+	}
+
 	async updateCollection(collection_title, collectionEntity) {
 		const collectionToUpdate = await this.collectionDao.findOne({
 			where: { collection_title },

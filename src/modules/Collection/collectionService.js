@@ -26,6 +26,13 @@ class CollectionService {
 		return collection;
 	}
 
+	async getCollectionByUserId(collectionData) {
+		const collection = await this.collectionRepository.findCollectionByUserId(
+			collectionData
+		);
+		return collection;
+	}
+
 	async updateCollection(collectionParam, collectionData) {
 		const collection = await this.collectionRepository.updateCollection(
 			collectionParam,

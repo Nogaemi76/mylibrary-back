@@ -14,10 +14,15 @@ class CollectionController {
 
 	addCollection = async (req, res, next) => {
 		try {
+			const req_body = req.body;
+			req_body.user_id = req.currentUserId;
 			const collection = await this.collectionService.addCollection({
-				...req.body,
+				...req_body,
 			});
+			console.log('req.currentUserId', req.currentUserId);
+			console.log('req.body', req.body);
 			res.status(201).json(collection);
+			console.log('collection', collection);
 		} catch (error) {
 			next(error);
 		}
@@ -28,6 +33,20 @@ class CollectionController {
 			const collection = await this.collectionService.getCollection(
 				req.params.collection_title
 			);
+			res.status(200).json(collection);
+		} catch (error) {
+			next(error);
+		}
+	};
+	getCollectionByUserId = async (req, res, next) => {
+		try {
+			// console.log('req.params.user_id', req.params.user_id);
+			// console.log('req.params', req.params);
+			const collection = await this.collectionService.getCollectionByUserId(
+				req.params.user_id
+			);
+			// console.log('collection', collection);
+
 			res.status(200).json(collection);
 		} catch (error) {
 			next(error);
@@ -48,7 +67,9 @@ class CollectionController {
 
 	deleteCollection = async (req, res, next) => {
 		try {
-			await this.collectionService.deleteCollection(req.params.collection_title);
+			await this.collectionService.deleteCollection(
+				req.params.collection_title
+			);
 			res.status(200).json({ message: 'Collection supprimée' });
 		} catch (error) {
 			next(error);

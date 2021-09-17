@@ -15,6 +15,14 @@ class CollectionRouter {
 			.get(auth.authenticate, collectionController.getCollection)
 			.put(auth.authenticate, collectionController.updateCollection)
 			.delete(auth.authenticate, collectionController.deleteCollection);
+
+		this.router
+			.route('/collections/id/:user_id')
+			.get(auth.authenticate, collectionController.getCollectionByUserId);
+
+		// this.router
+		// 	.route('/collections/title/:collection_title')
+		// 	.get(auth.authenticate, collectionController.getCollection);
 	}
 }
 export default CollectionRouter;
