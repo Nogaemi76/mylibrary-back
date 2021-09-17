@@ -28,7 +28,6 @@ class UserDao extends Model {
 				user_lastname: {
 					type: DataTypes.STRING,
 					allowNull: false,
-					unique: true,
 					validate: {
 						notNull: true,
 						len: [2, 50],
@@ -37,7 +36,6 @@ class UserDao extends Model {
 				user_firstname: {
 					type: DataTypes.STRING,
 					allowNull: false,
-					unique: true,
 					validate: {
 						notNull: true,
 						len: [2, 50],
