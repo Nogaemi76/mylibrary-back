@@ -65,6 +65,7 @@ class UserDao extends Model {
 	}
 	static associate(models) {
 		this.hasMany(models.Collection, {
+			foreignKey: 'user_id',
 			as: 'collections',
 		});
 		return this;
